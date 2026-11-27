@@ -1,47 +1,42 @@
-# Week 7 – Autoregressive Text Generation
+Week 7 – Next Token Prediction Using GPT-2
+About the Practical
+In this practical, I explored how GPT-2 predicts the next token based on the given input text. I used a pretrained GPT-2 model to understand how language models assign probabilities to different possible next tokens.
+Requirements
+- Python
+- PyTorch
+- Hugging Face Transformers
+- GPT-2 pretrained model
+Files Used
+- main.py
+- requirements.txt
+- week7_probability_results.csv
+Working Process
+First, I installed PyTorch and Transformers using the requirements file.
 
-## Aim
-To implement a simple autoregressive text generation model using Python by predicting the next word based on previously encountered words.
+Then, I loaded the GPT-2 model and tokenizer from Hugging Face. I provided four different input prompts to the model.
 
-## Description
-This experiment demonstrates how autoregressive text generation works. A training text dataset is tokenized into individual words, and a next-word probability dictionary is created. The model randomly selects the next word from the available possibilities and generates text sequentially.
+The tokenizer converted each prompt into token IDs. GPT-2 processed these tokens and generated logits for predicting the next token.
 
-## Technologies Used
-- Python 3
-- Random module
+I applied the Softmax function to convert the logits into probability values. Using Top-K selection, I displayed the five tokens with the highest probabilities for each prompt.
 
-## Files
-- `autoregression.py` – Python program for autoregressive text generation.
-- `README.md` – Documentation of the experiment.
+Finally, I stored all the results in a CSV file for further reference.
+Execution Steps
+Activate the virtual environment:
+..\.myenv\Scripts\Activate.ps1
+Install the required packages:
+python -m pip install -r requirements.txt
+Run the Python program:
+python main.py
+Results
+The program successfully processed four input prompts:
+- The cat is
+- Artificial intelligence is
+- India is a
+- Machine learning helps
+For every prompt, it displayed five predicted next tokens along with their token IDs and probability values.
 
-## Algorithm
-1. Import the random module.
-2. Define the training text.
-3. Convert the text into lowercase words using tokenization.
-4. Create a dictionary to store possible next words.
-5. Build the dictionary by identifying consecutive words.
-6. Define a text generation function.
-7. Select the starting word.
-8. Predict the next word randomly.
-9. Continue generating words until the maximum word limit is reached.
-10. Display the generated text.
+The results were saved in week7_probability_results.csv.
+Learning Outcome
+By completing this practical, I understood how GPT-2 performs next-token prediction. I learned about token IDs, logits, Softmax, probability distribution, and Top-K selection.
 
-## How to Run
-
-Open the terminal in the Week7 folder and execute:
-
-```bash
-python autoregression.py
-```
-
-## Expected Output
-
-```text
-Generated Text:
-the student studied hard ...
-```
-
-**Note:** The generated output may vary each time because the program uses `random.choice()`.
-
-## Conclusion
-Successfully implemented a simple autoregressive text generation model using Python. The experiment demonstrates sequential next-word prediction and text generation using a basic language model.
+I also understood how pretrained language models can predict possible next tokens based on the given input text.
